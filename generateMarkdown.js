@@ -13,6 +13,19 @@ function renderLicenseBadge(license) {
   }
 }
 
+function renderLicenseLink(license){
+  if (license == 'None') {
+    return ''
+  } else return `6. [License](#license)`
+}
+
+function renderLicenseSection(license){
+  if (license == 'None') {
+    return ''
+  } else return `## License
+  Created under the ${license} license`
+}
+
 // TODO: Create a function to generate markdown for README
 function generateMarkdown(data) {
   return `# ${data.title}
@@ -23,30 +36,35 @@ function generateMarkdown(data) {
   ## Table of Contents
 1. [Installation](#installation)
 2. [Usage](#usage)
-3. [License](#license)
-4. [Contributing](#contributing)
-5. [Testing](#tests)
-6. [Questions](#questions)
+3. [Contributing](#contributing)
+4. [Testing](#tests)
+5. [Questions](#questions)
+${renderLicenseLink(data.license)}
+
 
 ## Installation
 ${data.installation}
 
+
 ## Usage
 ${data.usage}
 
-## License
-This project was created under the ${data.license} license
 
 ## Contributing
 ${data.contributing}
 
+
 ## Testing
 ${data.tests}
+
 
 ## Questions
 View my GitHub profile [here](https://github.com/${data.username})  
 
 To reach out directly, please email me at ${data.email}
+
+${renderLicenseSection(data.license)}
+
 `;
 }
 
