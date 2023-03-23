@@ -1,19 +1,9 @@
 // TODO: Include packages needed for this application
 const fs = require('fs')
 const inquirer = require('inquirer')
-const generateMarkdown = require('./generateMarkdown.js')
+const md = require('./generateMarkdown.js')
 
 // TODO: Create an array of questions for user input
-
-//Prompt for Title, Description, Installation, Usage, Contributing, and Tests
-// +
-// License selection from list
-// 	add badge at top and notice in License section
-
-// Prompt for GitHub username and email
-// 	add to Questions section as links
-
-// Write md file with each section, including Table of Contents with clickable links to each section
 const questions = [
     {
         type: 'input',
@@ -47,17 +37,26 @@ const questions = [
     },
     {
         type: 'list',
-        message: 'Please describe contribution guidelines for this project: ',
+        message: 'Please choose a license for the project: ',
         name: 'license',
-        choices: ['MIT', 'GNU GPL v3', 'The Unlicense', 'None']
+        choices: ['MIT', 'GNU GPL v3', 'Unlicense', 'None']
+    },
+    {
+        type: 'input',
+        message: 'Please provide your Github username: ',
+        name: 'username',
+    },
+    {
+        type: 'input',
+        message: 'Please provide your email address: ',
+        name: 'email',
     },
   ];
 
 // TODO: Create a function to write README file
 function writeToFile(fileName, data) {
-
-    fs.writeFile('README.md', , 
-    //(err) => err ? console.error(err) : console.log('Success!')
+    fs.writeFile(fileName, md.generateMarkdown(data), 
+    (err) => err ? console.error(err) : console.log('Success!')
     );
 }
 
@@ -65,12 +64,10 @@ function writeToFile(fileName, data) {
 function init() {
 
     inquirer
-  .prompt(questions)
-  .then((response) =>
-    response.confirm === response.password
-      ? console.log('Success!')
-      : console.log('You forgot your password already?!')
-  );
+    .prompt(questions)
+    .then((response) =>
+        writeToFile('README.md', response)
+    )
 }
 
 // Function call to initialize app
