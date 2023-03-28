@@ -15,7 +15,9 @@
 Install by downloading the npm inquirer package and the two js files
 
 ## Usage
-Use it by running the index.js file via node in the command line
+Use it by running the index.js file via node in the command line, answering the prompts, then reviewing the resulting markdown file.
+
+Here is a video walkthrough of my command line app in action: [Video Link](https://drive.google.com/file/d/1Uh6kXGdb68uszPKUV4Ti_JM_5uOLmoUK/view)
 
 ## License
 This project was created under the MIT license
@@ -30,3 +32,5 @@ Test by running the index.js in the command line to see if user prompts are brou
 View my GitHub profile [here](https://github.com/dspnc)  
 
 To reach out directly, please email me at dspence.hill@gmail.com
+
+(Don't miss the video walkthrough above in the Usage section!)
